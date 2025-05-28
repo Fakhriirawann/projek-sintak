@@ -97,7 +97,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 pb-6 shiny-text">
             Testimoni Pelanggan
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
