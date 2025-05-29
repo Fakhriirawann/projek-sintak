@@ -8,7 +8,7 @@ const Testimonials = () => {
       location: "Jakarta",
       rating: 5,
       text: "Cookies terenak yang pernah saya coba! Teksturnya sempurna, renyah di luar tapi lembut di dalam. Chocolate chipnya juga premium banget. Pasti akan order lagi!",
-      image: "https://i.pinimg.com/736x/13/d1/11/13d1112b2ec4f0fc8d4448707c2960e3.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Chocolate Chip Classic",
     },
     {
@@ -17,7 +17,7 @@ const Testimonials = () => {
       location: "Bandung",
       rating: 5,
       text: "Packaging cantik banget, cocok buat kado. Rasanya juga lezat, tidak terlalu manis. Anak-anak di rumah suka sekali. Recommended!",
-      image: "https://i.pinimg.com/736x/f6/6c/de/f66cde4575e0fc0d17c4ac15bacfe69a.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Red Velvet Delight",
     },
     {
@@ -26,7 +26,7 @@ const Testimonials = () => {
       location: "Surabaya",
       rating: 5,
       text: "Matcha cookies-nya authentic banget! Tidak terlalu manis dan rasa matchanya pas. Pengiriman juga cepat dan aman. Top deh!",
-      image: "https://i.pinimg.com/736x/51/f0/69/51f069fb373803521eb58522c692669a.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Matcha Green Tea",
     },
     {
@@ -35,7 +35,7 @@ const Testimonials = () => {
       location: "Medan",
       rating: 4,
       text: "Kualitas cookies sangat baik, fresh dan enak. Harga sebanding dengan kualitas. Cuma pengiriman ke Medan agak lama, tapi worth it!",
-      image: "https://i.pinimg.com/736x/36/1f/11/361f1158bce9909614efcff1bf4bdb93.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Double Chocolate",
     },
     {
@@ -44,7 +44,7 @@ const Testimonials = () => {
       location: "Yogyakarta",
       rating: 5,
       text: "Strawberry cream cookies-nya unik dan enak! Cream-nya tidak terlalu manis dan strawberry-nya fresh. Inovasi yang bagus!",
-      image: "https://i.pinimg.com/736x/bf/7e/f3/bf7ef37c6a817789e6bf8016efaa3aec.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Strawberry Cream",
     },
     {
@@ -53,7 +53,7 @@ const Testimonials = () => {
       location: "Semarang",
       rating: 5,
       text: "Vanilla butter cookies yang simple tapi enak banget. Butter-nya premium dan tidak berminyak. Cocok untuk cemilan sehari-hari.",
-      image: "https://i.pinimg.com/736x/0d/b7/61/0db7613a8a1aa80afccb4e348f0f3505.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Vanilla Butter",
     },
     {
@@ -62,7 +62,7 @@ const Testimonials = () => {
       location: "Makassar",
       rating: 5,
       text: "Cookies & cream favorit keluarga! Oreo crumbs-nya banyak dan cream-nya lembut. Anak-anak sampai minta dibelikan lagi.",
-      image: "https://i.pinimg.com/736x/11/ce/57/11ce5760ef1400b726901fb45017151c.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Cookies & Cream",
     },
     {
@@ -71,7 +71,7 @@ const Testimonials = () => {
       location: "Palembang",
       rating: 4,
       text: "Peanut butter cookies-nya crunchy dan gurih. Rasa kacangnya authentic. Packaging juga rapi dan aman untuk pengiriman jauh.",
-      image: "https://i.pinimg.com/736x/e0/da/e7/e0dae79c6ef0f4baac9f672a404024c9.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Peanut Butter",
     },
     {
@@ -80,7 +80,7 @@ const Testimonials = () => {
       location: "Denpasar",
       rating: 5,
       text: "Salted caramel cookies-nya premium banget! Balance antara manis dan asin pas sekali. Ini yang terenak dari semua varian yang pernah saya coba.",
-      image: "https://i.pinimg.com/736x/72/2e/19/722e19b27faf39810a0fb3f484ad34ed.jpg",
+      image: "/placeholder.svg?height=80&width=80",
       product: "Salted Caramel",
     },
   ];
