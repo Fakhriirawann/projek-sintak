@@ -117,46 +117,51 @@ const Homepage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {bestSellers.map((product) => (
               <div
-                key={product.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
+              key={product.id}
+              className="bg-white rounded-2xl shadow-md border border-pink-200 overflow-hidden transform hover:scale-105 transition-transform duration-300 relative"
+            >
+              <div className="relative">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   className="w-full h-64 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {product.name}
-                  </h3>
-                  <div className="flex items-center mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating)
-                            ? "text-yellow-400 fill-current"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    ))}
-                    <span className="ml-2 text-sm text-gray-600">
-                      ({product.rating})
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-pink-500">
-                      {product.price}
-                    </span>
-                    <Link
-                      to={`/product/${product.id}`}
-                      className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors"
-                    >
-                      Lihat Detail
-                    </Link>
-                  </div>
+                <div className="absolute top-4 left-4 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
+                  Best Seller
                 </div>
               </div>
+              <div className="p-6 bg-gradient-to-b from-white to-pink-50">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {product.name}
+                </h3>
+                <div className="flex items-center mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`w-4 h-4 ${
+                        i < Math.floor(product.rating)
+                          ? "text-yellow-400 fill-current"
+                          : "text-gray-300"
+                      }`}
+                    />
+                  ))}
+                  <span className="ml-2 text-sm text-gray-500">
+                    ({product.rating})
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-2xl font-extrabold text-pink-600">
+                    {product.price}
+                  </span>
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="bg-black text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors"
+                  >
+                    Lihat Detail
+                  </Link>
+                </div>
+              </div>
+            </div>
             ))}
           </div>
         </div>
@@ -224,45 +229,53 @@ const Homepage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-              Kata Pelanggan Kami
-            </h2>
-          </div>
+      <section className="py-20 bg-pink-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+        Kata Pelanggan Kami
+      </h2>
+      <p className="text-lg text-gray-600">Apa kata mereka tentang cookies kami</p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4 italic">
-                  "{testimonial.text}"
-                </p>
-                <p className="font-semibold text-gray-800">
-                  - {testimonial.name}
-                </p>
-              </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div
+          key={index}
+          className="bg-white p-8 rounded-2xl shadow-md border border-pink-200 relative hover:shadow-xl transition-shadow duration-300"
+        >
+          <div className="absolute -top-6 left-6 text-pink-300 text-5xl opacity-30">
+            &ldquo;
+          </div>
+          <div className="flex items-center mb-3">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <Star
+                key={i}
+                className="w-5 h-5 text-yellow-400 fill-current"
+              />
             ))}
           </div>
-
-          <div className="text-center mt-8">
-            <Link
-              to="/testimonials"
-              className="text-pink-500 hover:text-pink-600 font-semibold"
-            >
-              Lihat Semua Testimoni →
-            </Link>
-          </div>
+          <p className="text-gray-700 mb-4 italic leading-relaxed">
+            "{testimonial.text}"
+          </p>
+          <p className="font-semibold text-gray-900">
+            - {testimonial.name}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div className="text-center mt-10">
+      <Link
+        to="/testimonials"
+        className="inline-block bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors"
+      >
+        Lihat Semua Testimoni
+      </Link>
+    </div>
+  </div>
+</section>
+
     </div>
   );
 };

@@ -124,157 +124,158 @@ const Catalog = () => {
   };
 
   return (
-    <div className="min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 shiny-text pb-4">
-            Katalog Produk
-          </h1>
-          <p className="text-xl text-gray-600">
-            Temukan cookies favorit Anda dari koleksi premium kami
-          </p>
-        </div>
+<div className="min-h-screen py-12 bg-pink-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div className="text-center mb-12">
+    <h1 className="flex items-center justify-center text-4xl lg:text-5xl font-extrabold text-gray-800 mb-6 gap-2">
+  <span role="img" aria-label="cookie">🍪</span>
+  <span className="shiny-text pb-2 ">Katalog Produk</span>
+</h1>
 
-        {/* Filters */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-          <div className="flex items-center mb-4">
-            <Filter className="w-5 h-5 text-gray-600 mr-2" />
-            <h3 className="text-lg font-semibold text-gray-800">
-              Filter Produk
-            </h3>
-          </div>
+      <p className="text-lg text-gray-600">
+        Temukan cookies favorit Anda dari koleksi premium kami
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Kategori
-              </label>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-              >
-                {categories.map((category) => (
-                  <option key={category.value} value={category.value}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+    {/* Filters */}
+    <div className="bg-white rounded-2xl shadow-md border border-pink-200 p-6 mb-10">
+      <div className="flex items-center mb-6">
+        <Filter className="w-6 h-6 text-pink-500 mr-2" />
+        <h3 className="text-xl font-bold text-gray-800">Filter Produk</h3>
+      </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Rentang Harga
-              </label>
-              <select
-                value={priceRange}
-                onChange={(e) => setPriceRange(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-              >
-                {priceRanges.map((range) => (
-                  <option key={range.value} value={range.value}>
-                    {range.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="relative">
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.name}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="absolute top-4 right-4 bg-white px-2 py-1 rounded-full text-sm font-semibold text-gray-800">
-                  {product.category === "premium" ? "Premium" : "Classic"}
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3">
-                  {product.description}
-                </p>
-
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-4 h-4 ${
-                        i < Math.floor(product.rating)
-                          ? "text-yellow-400 fill-current"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  ))}
-                  <span className="ml-2 text-sm text-gray-600">
-                    ({product.rating})
-                  </span>
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-pink-500">
-                    {formatPrice(product.price)}
-                  </span>
-                  <Link
-                    to={`/product/${product.id}`}
-                    className="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors font-medium"
-                  >
-                    Lihat Detail
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* No Results */}
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-600">
-              Tidak ada produk yang sesuai dengan filter Anda.
-            </p>
-            <button
-              onClick={() => {
-                setSelectedCategory("all");
-                setPriceRange("all");
-              }}
-              className="mt-4 text-pink-500 hover:text-pink-600 font-semibold"
-            >
-              Reset Filter
-            </button>
-          </div>
-        )}
-
-        {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-pink-500 to-pink-600 rounded-3xl p-8 lg:p-12 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">
-            Tidak Menemukan yang Anda Cari?
-          </h2>
-          <p className="text-xl mb-6">
-            Hubungi kami untuk custom order atau pertanyaan lainnya
-          </p>
-          <Link
-            to="/contact"
-            className="bg-white text-pink-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-block"
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Kategori
+          </label>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
           >
-            Hubungi Kami
-          </Link>
+            {categories.map((category) => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Rentang Harga
+          </label>
+          <select
+            value={priceRange}
+            onChange={(e) => setPriceRange(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+          >
+            {priceRanges.map((range) => (
+              <option key={range.value} value={range.value}>
+                {range.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     </div>
+
+    {/* Products Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {filteredProducts.map((product) => (
+        <div
+          key={product.id}
+          className="bg-white rounded-2xl shadow-md border border-pink-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className="relative">
+            <img
+              src={product.image || "/placeholder.svg"}
+              alt={product.name}
+              className="w-full h-64 object-cover"
+            />
+            <div className="absolute top-4 left-4 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm uppercase tracking-wide">
+              {product.category === "premium" ? "Premium" : "Classic"}
+            </div>
+          </div>
+
+          <div className="p-6 bg-gradient-to-b from-white to-pink-50">
+            <h3 className="text-xl font-bold text-gray-900 mb-1">
+              {product.name}
+            </h3>
+            <p className="text-sm text-gray-600 mb-3">
+              {product.description}
+            </p>
+
+            <div className="flex items-center mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className={`w-4 h-4 ${
+                    i < Math.floor(product.rating)
+                      ? "text-yellow-400 fill-current"
+                      : "text-gray-300"
+                  }`}
+                />
+              ))}
+              <span className="ml-2 text-sm text-gray-500">
+                ({product.rating})
+              </span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <span className="text-2xl font-extrabold text-pink-600">
+                {formatPrice(product.price)}
+              </span>
+              <Link
+                to={`/product/${product.id}`}
+                className="bg-black text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors"
+              >
+                Lihat Detail
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* No Results */}
+    {filteredProducts.length === 0 && (
+      <div className="text-center py-12">
+        <p className="text-lg text-gray-600">
+          Tidak ada produk yang sesuai dengan filter Anda.
+        </p>
+        <button
+          onClick={() => {
+            setSelectedCategory("all");
+            setPriceRange("all");
+          }}
+          className="mt-4 text-pink-600 hover:text-pink-700 font-semibold underline"
+        >
+          Reset Filter
+        </button>
+      </div>
+    )}
+
+    {/* CTA Section */}
+    <div className="mt-20 bg-gradient-to-r from-pink-500 to-pink-600 rounded-3xl p-10 lg:p-16 text-center text-white shadow-xl">
+      <h2 className="text-3xl lg:text-4xl font-extrabold mb-4">
+        Tidak Menemukan yang Anda Cari?
+      </h2>
+      <p className="text-lg lg:text-xl mb-6">
+        Hubungi kami untuk custom order atau pertanyaan lainnya
+      </p>
+      <Link
+        to="/contact"
+        className="bg-white text-pink-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition"
+      >
+        Hubungi Kami
+      </Link>
+    </div>
+  </div>
+</div>
+
   );
 };
 
