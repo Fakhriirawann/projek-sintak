@@ -50,7 +50,7 @@ const ProductDetail = ({ addToCart }) => {
     price: 50000,
     originalPrice: 55000,
     image: "/RedValvet.jpg",
-    images: ["/RedValvet.jpg", "/RedValvet2.jpg", "/RedValvet3.jpg"],
+    images: ["/RedValvet.jpg", "/RedValvet2.jpeg", "/RedValvet3.jpeg"],
     rating: 4.8,
     reviewCount: 98,
     description: "Cookies red velvet dengan cream cheese dan aroma vanilla khas, cocok untuk pencinta rasa lembut dengan sentuhan keju.",
@@ -72,10 +72,11 @@ const ProductDetail = ({ addToCart }) => {
     price: 55000,
     originalPrice: 60000,
     image: "/Matcha.jpg",
+    rating: 4.8,
     rating: 4.9,
     category: "premium",
     description: "Cookies matcha dengan white chocolate yang lembut dan aroma teh hijau Jepang yang autentik.",
-    images: ["/Matcha.jpg", "/Matcha2.jpg", "/Matcha3.jpg"],
+    images: ["/Matcha.jpg", "/Matcha2.jpeg", "/Matcha3.jpeg"],
     reviewCount: 112,
     ingredients: "Tepung terigu, gula, butter, telur, matcha powder Jepang, white chocolate",
     variants: [
@@ -95,10 +96,10 @@ const ProductDetail = ({ addToCart }) => {
     price: 48000,
     originalPrice: 52000,
     image: "/DoubleChocolate.jpg",
+    images: ["/DoubleChocolate.jpg", "/DC2.jpeg", "/DC3.jpeg"],
     rating: 4.7,
     category: "classic",
     description: "Cookies coklat lembut dengan potongan dark chocolate chunks untuk rasa intens dan kaya coklat.",
-    images: ["/DoubleChocolate.jpg", "/DoubleChocolate2.jpg", "/DoubleChocolate3.jpg"],
     reviewCount: 89,
     ingredients: "Tepung, kakao, dark chocolate, gula, telur, butter",
     variants: [
@@ -121,7 +122,7 @@ const ProductDetail = ({ addToCart }) => {
     rating: 4.8,
     category: "premium",
     description: "Cookies manis dengan isian cream dan aroma stroberi segar, favorit anak-anak dan dewasa.",
-    images: ["/StrawberryCream.jpg", "/StrawberryCream2.jpg", "/StrawberryCream3.jpg"],
+    images: ["/StrawberryCream.jpg", "/StrawberryCream2.jpeg", "/StrawberryCream3.jpeg"],
     reviewCount: 74,
     ingredients: "Tepung, gula, butter, telur, essence stroberi, cream filling",
     variants: [
@@ -144,7 +145,7 @@ const ProductDetail = ({ addToCart }) => {
     rating: 4.6,
     category: "classic",
     description: "Cookies vanilla lembut dengan rasa butter premium yang ringan dan wangi.",
-    images: ["/Vanilla.jpg", "/Vanilla2.jpg", "/Vanilla3.jpg"],
+    images: ["/Vanilla.jpg", "/VB2.jpeg", "/VB3.jpeg"],
     reviewCount: 65,
     ingredients: "Tepung, mentega, gula, telur, vanilla extract",
     variants: [
@@ -167,7 +168,7 @@ const ProductDetail = ({ addToCart }) => {
     rating: 4.8,
     category: "premium",
     description: "Cookies lembut dengan remahan oreo dan isian krim manis, cocok untuk camilan santai.",
-    images: ["/Co&Cream.jpg", "/Co&Cream2.jpg", "/Co&Cream3.jpg"],
+    images: ["/Co&Cream.jpg", "/cc2.jpeg", "/cc3.jpeg"],
     reviewCount: 92,
     ingredients: "Tepung, gula, butter, telur, vanilla, cookies crumbs, cream filling",
     variants: [
@@ -190,7 +191,7 @@ const ProductDetail = ({ addToCart }) => {
     rating: 4.7,
     category: "classic",
     description: "Cookies dengan selai kacang alami, tekstur crunchy dan rasa gurih yang khas.",
-    images: ["/Peanut.jpg", "/Peanut2.jpg", "/Peanut3.jpg"],
+    images: ["/Peanut.jpg", "/PB2.jpeg", "/PB3.jpeg"],
     reviewCount: 70,
     ingredients: "Tepung, gula, butter, telur, kacang tanah sangrai, garam",
     variants: [
@@ -213,7 +214,7 @@ const ProductDetail = ({ addToCart }) => {
     rating: 4.9,
     category: "premium",
     description: "Cookies manis asin dengan lelehan caramel dan sentuhan sea salt premium.",
-    images: ["/SaltedCaramel.jpg", "/SaltedCaramel2.jpg", "/SaltedCaramel3.jpg"],
+    images: ["/SaltedCaramel.jpg", "/SC2.jpeg", "/SC3.jpeg"],
     reviewCount: 104,
     ingredients: "Tepung, gula, telur, butter, caramel sauce, sea salt",
     variants: [

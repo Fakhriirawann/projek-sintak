@@ -84,90 +84,98 @@ const About = () => {
         </div>
 
         {/* Values */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-            Nilai-Nilai Kami
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-pink-500" />
+        <div className="relative py-20 bg-gradient-to-br from-rose-50 via-white to-pink-100 overflow-hidden">
+          {/* Decorative Blobs */}
+          <div className="absolute -top-20 -left-20 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 z-0 animate-pulse" />
+          <div className="absolute -bottom-28 -right-24 w-80 h-80 bg-yellow-100 rounded-full mix-blend-multiply filter blur-2xl opacity-20 z-0 animate-pulse" />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Nilai-nilai Kami */}
+            <div className="mb-20">
+              <h2 className="text-3xl font-bold text-rose-700 text-center mb-12">
+                Nilai-Nilai Kami
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: <Heart className="w-8 h-8 text-pink-500" />,
+                    title: "Kualitas",
+                    desc: "Kami tidak pernah berkompromi dengan kualitas. Setiap cookies dibuat dengan standar tertinggi dan bahan premium.",
+                    bg: "bg-pink-100",
+                  },
+                  {
+                    icon: <Users className="w-8 h-8 text-green-500" />,
+                    title: "Kepuasan Pelanggan",
+                    desc: "Kepuasan pelanggan adalah prioritas utama. Kami selalu mendengarkan feedback dan terus berinovasi.",
+                    bg: "bg-green-100",
+                  },
+                  {
+                    icon: <Clock className="w-8 h-8 text-blue-500" />,
+                    title: "Konsistensi",
+                    desc: "Setiap cookies yang kami produksi memiliki rasa dan kualitas yang konsisten, hari demi hari.",
+                    bg: "bg-blue-100",
+                  },
+                ].map((val, i) => (
+                  <div
+                    key={i}
+                    className="text-center p-6 bg-white/70 backdrop-blur-md rounded-3xl shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    <div
+                      className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${val.bg}`}
+                    >
+                      {val.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                      {val.title}
+                    </h3>
+                    <p className="text-gray-600">{val.desc}</p>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                Kualitas
-              </h3>
-              <p className="text-gray-600">
-                Kami tidak pernah berkompromi dengan kualitas. Setiap cookies
-                dibuat dengan standar tertinggi dan bahan premium.
-              </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-green-500" />
+            {/* Sertifikasi & Penghargaan */}
+            <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl p-8 lg:p-12">
+              <h2 className="text-3xl font-bold text-rose-700 text-center mb-10">
+                Sertifikasi & Penghargaan
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                {[
+                  {
+                    icon: <Award className="w-10 h-10 text-green-500" />,
+                    title: "Sertifikat Halal",
+                    desc: "Tersertifikasi halal MUI untuk menjamin kehalalan produk.",
+                    bg: "bg-green-100",
+                  },
+                  {
+                    icon: <Award className="w-10 h-10 text-blue-500" />,
+                    title: "PIRT",
+                    desc: "Nomor PIRT untuk menjamin keamanan dan kualitas produk.",
+                    bg: "bg-blue-100",
+                  },
+                  {
+                    icon: <Award className="w-10 h-10 text-yellow-500" />,
+                    title: "Best UMKM 2023",
+                    desc: "Penghargaan UMKM terbaik kategori makanan ringan.",
+                    bg: "bg-yellow-100",
+                  },
+                ].map((cert, i) => (
+                  <div
+                    key={i}
+                    className="p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    <div
+                      className={`${cert.bg} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4`}
+                    >
+                      {cert.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      {cert.title}
+                    </h3>
+                    <p className="text-gray-600">{cert.desc}</p>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                Kepuasan Pelanggan
-              </h3>
-              <p className="text-gray-600">
-                Kepuasan pelanggan adalah prioritas utama. Kami selalu
-                mendengarkan feedback dan terus berinovasi.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-blue-500" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                Konsistensi
-              </h3>
-              <p className="text-gray-600">
-                Setiap cookies yang kami produksi memiliki rasa dan kualitas
-                yang konsisten, hari demi hari.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Certifications */}
-        <div className="bg-white rounded-3xl shadow-lg p-8 lg:p-12">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
-            Sertifikasi & Penghargaan
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-10 h-10 text-green-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Sertifikat Halal
-              </h3>
-              <p className="text-gray-600">
-                Tersertifikasi halal MUI untuk menjamin kehalalan produk
-              </p>
-            </div>
-
-            <div>
-              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-10 h-10 text-blue-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">PIRT</h3>
-              <p className="text-gray-600">
-                Nomor PIRT untuk menjamin keamanan dan kualitas produk
-              </p>
-            </div>
-
-            <div>
-              <div className="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-10 h-10 text-yellow-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Best UMKM 2023
-              </h3>
-              <p className="text-gray-600">
-                Penghargaan UMKM terbaik kategori makanan ringan
-              </p>
             </div>
           </div>
         </div>
