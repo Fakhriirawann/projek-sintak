@@ -17,18 +17,15 @@ const ProductDetail = ({ addToCart }) => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState("original");
+  const [selectedImage, setSelectedImage] = useState(0);
 
-  // Mock product data - in real app, this would come from API
-  const product = {
-    id: Number.parseInt(id),
+  const products = [
+    {
+    id:1,
     name: "Chocolate Chip Classic",
     price: 45000,
     originalPrice: 50000,
-    images: [
-      "/Classic1.jpg",
-      "/Classic2.jpg",
-      "/Classic3.jpg",
-    ],
+    images: ["/Classic1.jpg", "/Classic2.jpg", "/Classic3.jpg"],
     rating: 4.9,
     reviewCount: 127,
     description:
@@ -46,45 +43,233 @@ const ProductDetail = ({ addToCart }) => {
       "Bahan premium",
       "Kemasan food grade",
     ],
-  };
+  },
+  {
+    id: 2,
+    name: "Red Velvet Delight",
+    price: 50000,
+    originalPrice: 55000,
+    image: "/RedValvet.jpg",
+    images: ["/RedValvet.jpg", "/RedValvet2.jpg", "/RedValvet3.jpg"],
+    rating: 4.8,
+    reviewCount: 98,
+    description: "Cookies red velvet dengan cream cheese dan aroma vanilla khas, cocok untuk pencinta rasa lembut dengan sentuhan keju.",
+    ingredients: "Tepung, gula, butter, telur, cream cheese, cocoa powder, vanilla, pewarna makanan alami",
+    variants: [
+      { id: "original", name: "Original", price: 50000 },
+      { id: "gift-box", name: "Gift Box", price: 95000 },
+    ],
+    features: [
+      "Rasa khas red velvet",
+      "Isi cream cheese",
+      "Premium packaging",
+      "Tanpa bahan kimia",
+    ],
+  },
+  {
+    id: 3,
+    name: "Matcha Green Tea",
+    price: 55000,
+    originalPrice: 60000,
+    image: "/Matcha.jpg",
+    rating: 4.9,
+    category: "premium",
+    description: "Cookies matcha dengan white chocolate yang lembut dan aroma teh hijau Jepang yang autentik.",
+    images: ["/Matcha.jpg", "/Matcha2.jpg", "/Matcha3.jpg"],
+    reviewCount: 112,
+    ingredients: "Tepung terigu, gula, butter, telur, matcha powder Jepang, white chocolate",
+    variants: [
+      { id: "original", name: "Original", price: 55000 },
+      { id: "large", name: "Large Pack", price: 95000 },
+    ],
+    features: [
+      "Mengandung matcha asli Jepang",
+      "White chocolate premium",
+      "Tanpa pengawet",
+      "Aroma alami",
+    ],
+  },
+  {
+    id: 4,
+    name: "Double Chocolate",
+    price: 48000,
+    originalPrice: 52000,
+    image: "/DoubleChocolate.jpg",
+    rating: 4.7,
+    category: "classic",
+    description: "Cookies coklat lembut dengan potongan dark chocolate chunks untuk rasa intens dan kaya coklat.",
+    images: ["/DoubleChocolate.jpg", "/DoubleChocolate2.jpg", "/DoubleChocolate3.jpg"],
+    reviewCount: 89,
+    ingredients: "Tepung, kakao, dark chocolate, gula, telur, butter",
+    variants: [
+      { id: "original", name: "Original", price: 48000 },
+      { id: "double-pack", name: "Double Pack", price: 90000 },
+    ],
+    features: [
+      "Kaya coklat",
+      "Tekstur fudgy",
+      "Dark chocolate asli",
+      "Cocok untuk pecinta coklat",
+    ],
+  },
+  {
+    id:5 ,
+    name: "Strawberry Cream",
+    price: 52000,
+    originalPrice: 58000,
+    image: "/StrawberryCream.jpg",
+    rating: 4.8,
+    category: "premium",
+    description: "Cookies manis dengan isian cream dan aroma stroberi segar, favorit anak-anak dan dewasa.",
+    images: ["/StrawberryCream.jpg", "/StrawberryCream2.jpg", "/StrawberryCream3.jpg"],
+    reviewCount: 74,
+    ingredients: "Tepung, gula, butter, telur, essence stroberi, cream filling",
+    variants: [
+      { id: "original", name: "Original", price: 52000 },
+      { id: "gift-box", name: "Gift Box", price: 98000 },
+    ],
+    features: [
+      "Isi cream stroberi",
+      "Manis seimbang",
+      "Warna alami",
+      "Daya tarik visual tinggi",
+    ],
+  },
+  {
+    id:6 ,
+    name: "Vanilla Butter",
+    price: 42000,
+    originalPrice: 47000,
+    image: "/Vanilla.jpg",
+    rating: 4.6,
+    category: "classic",
+    description: "Cookies vanilla lembut dengan rasa butter premium yang ringan dan wangi.",
+    images: ["/Vanilla.jpg", "/Vanilla2.jpg", "/Vanilla3.jpg"],
+    reviewCount: 65,
+    ingredients: "Tepung, mentega, gula, telur, vanilla extract",
+    variants: [
+      { id: "original", name: "Original", price: 42000 },
+      { id: "butter-pack", name: "Butter Pack", price: 80000 },
+    ],
+    features: [
+      "Rasa butter asli",
+      "Tanpa pewarna",
+      "Aroma vanilla natural",
+      "Ringan di lidah",
+    ],
+  },
+  {
+    id:7 ,
+    name: "Cookies & Cream",
+    price: 49000,
+    originalPrice: 55000,
+    image: "/Co&Cream.jpg",
+    rating: 4.8,
+    category: "premium",
+    description: "Cookies lembut dengan remahan oreo dan isian krim manis, cocok untuk camilan santai.",
+    images: ["/Co&Cream.jpg", "/Co&Cream2.jpg", "/Co&Cream3.jpg"],
+    reviewCount: 92,
+    ingredients: "Tepung, gula, butter, telur, vanilla, cookies crumbs, cream filling",
+    variants: [
+      { id: "original", name: "Original", price: 49000 },
+      { id: "snack-pack", name: "Snack Pack", price: 85000 },
+    ],
+    features: [
+      "Remahan oreo",
+      "Cream filling",
+      "Rasa manis pas",
+      "Disukai anak-anak",
+    ],
+  },
+  {
+    id:8 ,
+    name: "Peanut Butter",
+    price: 46000,
+    originalPrice: 50000,
+    image: "/Peanut.jpg",
+    rating: 4.7,
+    category: "classic",
+    description: "Cookies dengan selai kacang alami, tekstur crunchy dan rasa gurih yang khas.",
+    images: ["/Peanut.jpg", "/Peanut2.jpg", "/Peanut3.jpg"],
+    reviewCount: 70,
+    ingredients: "Tepung, gula, butter, telur, kacang tanah sangrai, garam",
+    variants: [
+      { id: "original", name: "Original", price: 46000 },
+      { id: "twin-pack", name: "Twin Pack", price: 87000 },
+    ],
+    features: [
+      "Selai kacang asli",
+      "Gurih dan crunchy",
+      "Protein alami",
+      "Cocok untuk ngemil",
+    ],
+  },
+  {
+    id: 9,
+    name: "Salted Caramel",
+    price: 58000,
+    originalPrice: 64000,
+    image: "/SaltedCaramel.jpg",
+    rating: 4.9,
+    category: "premium",
+    description: "Cookies manis asin dengan lelehan caramel dan sentuhan sea salt premium.",
+    images: ["/SaltedCaramel.jpg", "/SaltedCaramel2.jpg", "/SaltedCaramel3.jpg"],
+    reviewCount: 104,
+    ingredients: "Tepung, gula, telur, butter, caramel sauce, sea salt",
+    variants: [
+      { id: "original", name: "Original", price: 58000 },
+      { id: "deluxe-box", name: "Deluxe Box", price: 100000 },
+    ],
+    features: [
+      "Salted caramel premium",
+      "Manis dan asin seimbang",
+      "Lelehan caramel lembut",
+      "Topping eksklusif",
+    ],
+  },
+  
+];
+const product = products.find((item) => item.id === Number(id));
 
-  const [selectedImage, setSelectedImage] = useState(0);
+if (!product) {
+  return <div className="text-center py-20 text-gray-500">Produk tidak ditemukan.</div>;
+}
 
-  const handleQuantityChange = (change) => {
-    const newQuantity = quantity + change;
-    if (newQuantity >= 1 && newQuantity <= 10) {
-      setQuantity(newQuantity);
-    }
-  };
+const handleQuantityChange = (change) => {
+  const newQuantity = quantity + change;
+  if (newQuantity >= 1 && newQuantity <= 10) {
+    setQuantity(newQuantity);
+  }
+};
 
-  const handleAddToCart = () => {
-    const selectedVariantData = product.variants.find(
-      (v) => v.id === selectedVariant
-    );
-    const productToAdd = {
-      ...product,
-      variant: selectedVariantData,
-      quantity: quantity,
-      totalPrice: selectedVariantData.price * quantity,
-    };
-    addToCart(productToAdd);
-    alert("Produk berhasil ditambahkan ke keranjang!");
-  };
-
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(price);
-  };
-
+const handleAddToCart = () => {
   const selectedVariantData = product.variants.find(
     (v) => v.id === selectedVariant
   );
+  const productToAdd = {
+    ...product,
+    variant: selectedVariantData,
+    quantity: quantity,
+    totalPrice: selectedVariantData.price * quantity,
+  };
+  addToCart(productToAdd);
+  alert("Produk berhasil ditambahkan ke keranjang!");
+};
 
-  return (
-    <div className="min-h-screen py-12">
+const formatPrice = (price) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(price);
+};
+
+const selectedVariantData = product.variants.find(
+  (v) => v.id === selectedVariant
+);
+
+return (
+  <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="mb-8">
@@ -313,7 +498,7 @@ const ProductDetail = ({ addToCart }) => {
         </div>
       </div>
     </div>
-  );
+);
 };
 
 export default ProductDetail;
