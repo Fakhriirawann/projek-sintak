@@ -40,48 +40,49 @@ const Homepage = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-pink-50 to-cream-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-6">
-                Cookies Manis,
-                <span className="text-pink-500 block">Cita Rasa Elegan</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Nikmati kelezatan cookies premium yang dibuat dengan bahan
-                berkualitas tinggi dan resep rahasia keluarga.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/catalog"
-                  className="bg-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-pink-600 transition-colors text-center"
-                >
-                  Pesan Sekarang
-                </Link>
-                <Link
-                  to="/about"
-                  className="border-2 border-pink-500 text-pink-500 px-8 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors text-center"
-                >
-                  Tentang Kami
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/cookies.jpg"
-                alt="SweetMelt Cookies"
-                className=" w-full h-auto rounded-2xl shadow-2xl"
-              />
-              <div className="absolute -top-4 -right-4 bg-yellow-400 text-yellow-800 px-4 py-2 rounded-full font-bold transform rotate-12">
-                Promo Spesial!
-              </div>
-            </div>
+   <div className="min-h-screen">
+  <section className="relative bg-gradient-to-r from-pink-50 to-rose-100 py-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+            Cookies Manis,
+            <span className="text-pink-500 block">Cita Rasa Elegan</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Nikmati kelezatan cookies premium yang dibuat dengan bahan
+            berkualitas tinggi dan resep rahasia keluarga.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              to="/catalog"
+              className="bg-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-pink-600 hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out text-center shadow-md"
+            >
+              Pesan Sekarang
+            </Link>
+            <Link
+              to="/about"
+              className="border-2 border-pink-500 text-pink-500 px-8 py-3 rounded-full font-semibold hover:bg-pink-100 hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out text-center"
+            >
+              Tentang Kami
+            </Link>
           </div>
         </div>
-      </section>
+        <div className="relative">
+          <div className="border-[10px] border-yellow-100 rounded-[30px] shadow-lg p-1 bg-white/60 backdrop-blur-md">
+            <img
+              src="/cookies.jpg"
+              alt="SweetMelt Cookies"
+              className="w-full h-auto rounded-[20px] shadow-xl border border-yellow-300"
+            />
+          </div>
+          <div className="absolute -top-4 -right-4 bg-yellow-400 text-yellow-800 px-4 py-2 rounded-full font-bold transform rotate-12 shadow-md">
+            Promo Spesial!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
       {/* Promo Section */}
       <section className="py-16 bg-pink-500">
