@@ -44,7 +44,7 @@ const About = () => {
           </div>
           <div className="relative">
             <img
-              src="/placeholder.svg?height=400&width=600"
+              src="/About.jpg"
               alt="Dapur SweetMelt"
               className="w-full h-auto rounded-2xl shadow-lg"
             />

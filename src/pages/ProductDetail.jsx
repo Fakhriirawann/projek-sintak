@@ -25,9 +25,9 @@ const ProductDetail = ({ addToCart }) => {
     price: 45000,
     originalPrice: 50000,
     images: [
-      "/placeholder.svg?height=500&width=500",
-      "/placeholder.svg?height=500&width=500",
-      "/placeholder.svg?height=500&width=500",
+      "/Classic1.jpg",
+      "/Classic2.jpg",
+      "/Classic3.jpg",
     ],
     rating: 4.9,
     reviewCount: 127,
