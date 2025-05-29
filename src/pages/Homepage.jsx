@@ -7,7 +7,7 @@ const Homepage = () => {
       id: 1,
       name: "Chocolate Chip Classic",
       price: "Rp 45.000",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/ChocolateChipClassic.jpg",
       rating: 4.9,
     },
     {
@@ -71,9 +71,9 @@ const Homepage = () => {
             </div>
             <div className="relative">
               <img
-                src="/placeholder.svg?height=500&width=500"
+                src="/cookies.jpg"
                 alt="SweetMelt Cookies"
-                className="w-full h-auto rounded-2xl shadow-2xl"
+                className=" w-full h-auto rounded-2xl shadow-2xl"
               />
               <div className="absolute -top-4 -right-4 bg-yellow-400 text-yellow-800 px-4 py-2 rounded-full font-bold transform rotate-12">
                 Promo Spesial!
