@@ -49,6 +49,13 @@ const CheckoutModal = ({
       fee: 0,
     },
     {
+      id: "cash-on-delivery",
+      name: "Cash On Delivery",
+      icon: Building,
+      description: "Bayar Ditempat Setelah Barang Sampai",
+      fee: 0,
+    },
+    {
       id: "e-wallet",
       name: "E-Wallet",
       icon: Smartphone,
@@ -170,7 +177,6 @@ const CheckoutModal = ({
     // Call parent function to clear cart
     setTimeout(() => {
       onOrderComplete();
-      onClose();
       setCurrentStep(1);
       setOrderSuccess(false);
       setCustomerData({
@@ -190,7 +196,7 @@ const CheckoutModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
