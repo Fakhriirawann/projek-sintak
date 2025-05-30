@@ -31,6 +31,7 @@ const ProductDetail = ({ addToCart }) => {
       name: "Chocolate Chip Classic",
       price: 45000,
       originalPrice: 50000,
+      image: "/Classic1.jpg",
       images: ["/Classic1.jpg", "/Classic2.jpg", "/Classic3.jpg"],
       rating: 4.9,
       reviewCount: 127,
