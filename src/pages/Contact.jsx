@@ -281,10 +281,7 @@ const Contact = () => {
             )}
           </div>
 
-          {/* Map and Additional Info */}
           <div className="space-y-8">
-            {/* Map Placeholder */}
-            {/* Google Maps Embed */}
             <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
               <div className="w-full h-64 sm:h-80 lg:h-96">
                 <iframe
@@ -359,7 +356,7 @@ const Contact = () => {
                 langsung via WhatsApp.
               </p>
               <a
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/628187437229494"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-pink-500 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center"
