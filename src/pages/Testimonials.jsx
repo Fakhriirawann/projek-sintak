@@ -116,92 +116,104 @@ const Testimonials = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-  {stats.map((stat, index) => (
-    <div
-      key={index}
-      className="text-center p-6 bg-gradient-to-br from-white via-pink-50 to-white rounded-2xl shadow-md border border-pink-100 transition transform hover:-translate-y-1 hover:shadow-xl"
-    >
-      <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-700 mb-2">
-        {stat.number}
-        {stat.suffix}
-      </div>
-      <div className="text-sm text-gray-700 font-semibold tracking-wide uppercase">
-        {stat.label}
-      </div>
-    </div>
-  ))}
-</div>
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="text-center p-6 bg-gradient-to-br from-white via-pink-50 to-white rounded-2xl shadow-md border border-pink-100 transition transform hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-700 mb-2">
+                {stat.number}
+                {stat.suffix}
+              </div>
+              <div className="text-sm text-gray-700 font-semibold tracking-wide uppercase">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-  {testimonials.map((testimonial) => (
-    <div
-      key={testimonial.id}
-      className="bg-white rounded-2xl p-6 border border-pink-100 shadow-[0_4px_20px_rgba(255,192,203,0.2)] hover:shadow-[0_8px_30px_rgba(255,192,203,0.3)] hover:-translate-y-1 transition-all duration-300"
-    >
-      <div className="flex items-center mb-4">
-        <Quote className="w-8 h-8 text-pink-300 mr-3" />
-        <div className="flex">
-          {[...Array(testimonial.rating)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="bg-white rounded-2xl p-6 border border-pink-100 shadow-[0_4px_20px_rgba(255,192,203,0.2)] hover:shadow-[0_8px_30px_rgba(255,192,203,0.3)] hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="flex items-center mb-4">
+                <Quote className="w-8 h-8 text-pink-300 mr-3" />
+                <div className="flex">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 italic mb-6 leading-relaxed relative">
+                <span className="text-pink-400 text-2xl absolute -top-3 left-0">
+                  “
+                </span>
+                {testimonial.text}
+                <span className="text-pink-400 text-2xl absolute -bottom-3 right-0">
+                  ”
+                </span>
+              </p>
+              <div className="flex items-center">
+                <img
+                  src={testimonial.image || "/placeholder.svg"}
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-pink-200"
+                />
+                <div>
+                  <h4 className="font-semibold text-gray-800">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm text-gray-500">
+                    {testimonial.location}
+                  </p>
+                  <p className="text-sm text-pink-600 font-medium">
+                    {testimonial.product}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-      </div>
-      <p className="text-gray-600 italic mb-6 leading-relaxed relative">
-        <span className="text-pink-400 text-2xl absolute -top-3 left-0">“</span>
-        {testimonial.text}
-        <span className="text-pink-400 text-2xl absolute -bottom-3 right-0">”</span>
-      </p>
-      <div className="flex items-center">
-        <img
-          src={testimonial.image || "/placeholder.svg"}
-          alt={testimonial.name}
-          className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-pink-200"
-        />
-        <div>
-          <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
-          <p className="text-sm text-gray-500">{testimonial.location}</p>
-          <p className="text-sm text-pink-600 font-medium">{testimonial.product}</p>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
 
         {/* CTA Section */}
         <div className="relative overflow-hidden rounded-3xl p-10 lg:p-14 bg-gradient-to-br from-pink-100 via-white to-pink-200 border border-pink-100 shadow-lg text-center">
-  {/* Background Decorative Pattern */}
-  <div className="absolute inset-0 bg-[url('/pattern-dots.svg')] opacity-10 bg-cover bg-no-repeat pointer-events-none"></div>
+          {/* Background Decorative Pattern */}
+          <div className="absolute inset-0 bg-[url('/pattern-dots.svg')] opacity-10 bg-cover bg-no-repeat pointer-events-none"></div>
 
-  {/* Decorative Top Left Icon */}
-  <div className="absolute top-4 left-4 w-12 h-12 bg-pink-200 rounded-full opacity-30 blur-lg"></div>
-  <div className="absolute bottom-4 right-6 w-16 h-16 bg-white rounded-full opacity-10 blur-2xl"></div>
+          {/* Decorative Top Left Icon */}
+          <div className="absolute top-4 left-4 w-12 h-12 bg-pink-200 rounded-full opacity-30 blur-lg"></div>
+          <div className="absolute bottom-4 right-6 w-16 h-16 bg-white rounded-full opacity-10 blur-2xl"></div>
 
-  <h2 className="text-3xl lg:text-4xl font-extrabold text-pink-700 mb-4 tracking-tight">
-    Bergabunglah dengan Ribuan Pelanggan Puas!
-  </h2>
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-pink-700 mb-4 tracking-tight">
+            Bergabunglah dengan Ribuan Pelanggan Puas!
+          </h2>
 
-  <p className="text-lg lg:text-xl mb-6 text-pink-600 max-w-2xl mx-auto leading-relaxed">
-    Rasakan sendiri kelezatan cookies premium kami dan jadilah bagian dari keluarga SweetMelt.
-  </p>
+          <p className="text-lg lg:text-xl mb-6 text-pink-600 max-w-2xl mx-auto leading-relaxed">
+            Rasakan sendiri kelezatan cookies premium kami dan jadilah bagian
+            dari keluarga SweetMelt.
+          </p>
 
-  <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-    <a
-      href="/catalog"
-      className="bg-white text-pink-600 px-8 py-3 rounded-full font-bold shadow-sm hover:bg-pink-100 transition-colors"
-    >
-      🍪 Pesan Sekarang
-    </a>
-    <a
-      href="/contact"
-      className="border border-pink-300 text-pink-700 px-8 py-3 rounded-full font-bold hover:bg-pink-100 hover:text-pink-800 transition-colors"
-    >
-      💬 Hubungi Kami
-    </a>
-  </div>
-</div>
-
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+            <a
+              href="/catalog"
+              className="bg-white text-pink-600 px-8 py-3 rounded-full font-bold shadow-sm hover:bg-pink-100 transition-colors"
+            >
+              🍪 Pesan Sekarang
+            </a>
+            <a
+              href="/contact"
+              className="border border-pink-300 text-pink-700 px-8 py-3 rounded-full font-bold hover:bg-pink-100 hover:text-pink-800 transition-colors"
+            >
+              💬 Hubungi Kami
+            </a>
+          </div>
+        </div>
 
         {/* Review Form */}
         <div className="mt-16 bg-white rounded-3xl shadow-lg p-8 lg:p-12">

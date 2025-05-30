@@ -9,6 +9,11 @@
  * at the very top of this file (adjust path as needed).
  */
 
+@font-face {
+  font-family: "Dancing";
+  src: url("./assets/DancingScript-Regular.ttf") format("truetype");
+}
+
 @import "tailwindcss"; /* The single import for Tailwind CSS v4 */
 
 /*
@@ -17,6 +22,8 @@
   * and makes variables available as utility classes.
   */
 @theme {
+  --font-dancing: Dancing, "cursive";
+
   /* Colors */
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -247,4 +254,20 @@
 }
 .animate-fadeInOut {
   animation: fadeInOut 6s ease forwards;
+}
+
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-start infinite;
 }

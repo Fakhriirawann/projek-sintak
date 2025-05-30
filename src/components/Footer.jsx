@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
+import Toast from "./Toast";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [showToast, setShowToast] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("https://formspree.io/f/xgvywvnr", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: new FormData(e.target),
+    });
+
+    if (res.ok) {
+      setShowToast(true);
+      setEmail("");
+    }
+  };
+
   return (
     <footer className="bg-gray-50 border-t">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -62,16 +84,23 @@ const Footer = () => {
             <p className="text-gray-600 mb-4 text-sm">
               Dapatkan info promo dan produk terbaru
             </p>
-            <div className="flex">
+            <form onSubmit={handleSubmit} className="flex">
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Email Anda"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               />
-              <button className="px-4 py-2 bg-pink-500 text-white rounded-r-md hover:bg-pink-600 transition-colors">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-pink-500 text-white rounded-r-md hover:bg-pink-600 transition-colors"
+              >
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -80,6 +109,14 @@ const Footer = () => {
             © 2024 SweetMelt Cookies. All rights reserved.
           </p>
         </div>
+
+        {/* Toast */}
+        {showToast && (
+          <Toast
+            message="Berhasil berlangganan newsletter!"
+            onClose={() => setShowToast(false)}
+          />
+        )}
       </div>
     </footer>
   );

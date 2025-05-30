@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Toast from "../components/Toast";
 import {
   Phone,
   Mail,
@@ -10,6 +11,7 @@ import {
   Facebook,
   MessageCircle,
 } from "lucide-react";
+import TypingEffect from "../components/TypingEffect";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,17 +30,42 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    alert("Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+    try {
+      const response = await fetch("https://formspree.io/f/xgvywvnr", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const userName = formData.name;
+        setToastMessage(
+          `Terimakasih, ${userName}! Pesan Anda Berhasil Terkirim.`
+        );
+        setShowToast(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setToastMessage("Pesan Gagal Terkirim, Coba Beberapa Saat Lagi.");
+        setShowToast(true);
+      }
+    } catch (error) {
+      setToastMessage("Terjadi kesalahan. Silakan coba lagi.");
+      setShowToast(true);
+    }
   };
 
   const contactInfo = [
@@ -232,6 +259,12 @@ const Contact = () => {
                 Kirim Pesan
               </button>
             </form>
+            {showToast && (
+              <Toast
+                message={toastMessage}
+                onClose={() => setShowToast(false)}
+              />
+            )}
           </div>
 
           {/* Map and Additional Info */}
