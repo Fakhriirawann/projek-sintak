@@ -71,11 +71,12 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        dancing: ["DancingScript", "cursive"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.5s ease-out",
-        "fade-in-full": "fadeInFull 1s ease-out", 
+        "fade-in-full": "fadeInFull 1s ease-out",
       },
       keyframes: {
         fadeIn: {
