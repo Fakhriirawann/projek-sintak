@@ -82,7 +82,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Telepon & WhatsApp",
-      details: ["+62 812-3456-7890", "+62 821-9876-5432"],
+      details: ["+62 895-6213-89403"],
       color: "text-green-500",
     },
     {
@@ -126,8 +126,8 @@ const Contact = () => {
     {
       name: "WhatsApp",
       icon: MessageCircle,
-      handle: "+62 812-3456-7890",
-      url: "https://wa.me/6281234567890",
+      handle: "+62 895-6213-89403",
+      url: "https://wa.me/+62895621389403",
       color: "text-green-500",
     },
   ];
