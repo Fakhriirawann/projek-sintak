@@ -1,11 +1,13 @@
 import { Star, Quote } from "lucide-react";
+import { useState } from "react";
+import Toast from "../components/Toast";
 
 const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
       name: "Sarah Maharani",
-      location: "Jakarta",
+      location: "Palembang",
       rating: 5,
       text: "Cookies terenak yang pernah saya coba! Teksturnya sempurna, renyah di luar tapi lembut di dalam. Chocolate chipnya juga premium banget. Pasti akan order lagi!",
       image: "/Sarah.jpg",
@@ -99,6 +101,69 @@ const Testimonials = () => {
     { number: "500+", label: "Ulasan Positif", suffix: "" },
     { number: "98%", label: "Repeat Order", suffix: "" },
   ];
+
+  // State untuk form
+  const [formData, setFormData] = useState({
+    name: "",
+    city: "",
+    product: "",
+    rating: 0,
+    review: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleRatingClick = (rating) => {
+    setFormData((prev) => ({ ...prev, rating }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, city, product, rating, review } = formData;
+
+    if (!name || !city || !product || !rating || review.length < 10) {
+      setToastMessage(
+        "Mohon lengkapi semua kolom dan isi ulasan minimal 10 karakter."
+      );
+      setToastType("warning");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://formspree.io/f/xgvywvnr", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, city, product, rating, review }),
+      });
+
+      if (response.ok) {
+        setToastMessage("✅ Ulasan berhasil dikirim. Terima kasih!");
+        setToastType("success");
+        setFormData({
+          name: "",
+          city: "",
+          product: "",
+          rating: 0,
+          review: "",
+        });
+      } else {
+        setToastMessage("❌ Gagal mengirim ulasan. Silakan coba lagi.");
+        setToastType("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setToastMessage("⚠️ Terjadi kesalahan. Coba lagi nanti.");
+      setToastType("error");
+    }
+  };
+
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("info");
 
   return (
     <div className="min-h-screen py-12">
@@ -220,7 +285,7 @@ const Testimonials = () => {
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
             Bagikan Pengalaman Anda
           </h2>
-          <form className="max-w-2xl mx-auto space-y-6">
+          <form className="max-w-2xl mx-auto space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -228,7 +293,10 @@ const Testimonials = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                   placeholder="Masukkan nama Anda"
                 />
               </div>
@@ -238,7 +306,10 @@ const Testimonials = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                   placeholder="Masukkan kota Anda"
                 />
               </div>
@@ -248,17 +319,24 @@ const Testimonials = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Produk yang Dibeli
               </label>
-              <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+              <select
+                name="product"
+                value={formData.product}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+              >
                 <option value="">Pilih produk</option>
-                <option value="chocolate-chip">Chocolate Chip Classic</option>
-                <option value="red-velvet">Red Velvet Delight</option>
-                <option value="matcha">Matcha Green Tea</option>
-                <option value="double-chocolate">Double Chocolate</option>
-                <option value="strawberry">Strawberry Cream</option>
-                <option value="vanilla">Vanilla Butter</option>
-                <option value="cookies-cream">Cookies & Cream</option>
-                <option value="peanut-butter">Peanut Butter</option>
-                <option value="salted-caramel">Salted Caramel</option>
+                <option value="Chocolate Chip Classic">
+                  Chocolate Chip Classic
+                </option>
+                <option value="Red Velvet Delight">Red Velvet Delight</option>
+                <option value="Matcha Green Tea">Matcha Green Tea</option>
+                <option value="Double Chocolate">Double Chocolate</option>
+                <option value="Strawberry Cream">Strawberry Cream</option>
+                <option value="Vanilla Butter">Vanilla Butter</option>
+                <option value="Cookies & Cream">Cookies & Cream</option>
+                <option value="Peanut Butter">Peanut Butter</option>
+                <option value="Salted Caramel">Salted Caramel</option>
               </select>
             </div>
 
@@ -267,13 +345,21 @@ const Testimonials = () => {
                 Rating
               </label>
               <div className="flex space-x-2">
-                {[1, 2, 3, 4, 5].map((rating) => (
+                {[1, 2, 3, 4, 5].map((star) => (
                   <button
-                    key={rating}
+                    key={star}
                     type="button"
+                    onClick={() => handleRatingClick(star)}
                     className="p-1 hover:scale-110 transition-transform"
                   >
-                    <Star className="w-8 h-8 text-gray-300 hover:text-yellow-400 transition-colors" />
+                    <Star
+                      className={`w-8 h-8 ${
+                        star <= formData.rating
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      } transition-colors`}
+                      fill={star <= formData.rating ? "currentColor" : "none"}
+                    />
                   </button>
                 ))}
               </div>
@@ -284,8 +370,11 @@ const Testimonials = () => {
                 Ulasan Anda
               </label>
               <textarea
+                name="review"
+                value={formData.review}
+                onChange={handleChange}
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                 placeholder="Ceritakan pengalaman Anda dengan produk kami..."
               ></textarea>
             </div>
@@ -299,6 +388,16 @@ const Testimonials = () => {
               </button>
             </div>
           </form>
+          {toastMessage && (
+            <Toast
+              message={toastMessage}
+              type={toastType}
+              onClose={() => {
+                setToastMessage("");
+                setToastType("info");
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -75,7 +75,7 @@ const CheckoutModal = ({
     {
       id: "same-day",
       name: "Same Day Delivery",
-      description: "Jakarta area, delivered today",
+      description: "Palembang area, delivered today",
       price: 15000,
       duration: "3-6 jam",
     },
@@ -361,7 +361,7 @@ const CheckoutModal = ({
                           value={customerData.city}
                           onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                          placeholder="Jakarta"
+                          placeholder="Palembang"
                         />
                       </div>
                     </div>

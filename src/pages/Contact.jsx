@@ -30,8 +30,11 @@ const Contact = () => {
     }));
   };
 
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
+  const [toast, setToast] = useState({
+    message: "",
+    type: "success",
+    show: false,
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,10 +50,11 @@ const Contact = () => {
 
       if (response.ok) {
         const userName = formData.name;
-        setToastMessage(
-          `Terimakasih, ${userName}! Pesan Anda Berhasil Terkirim.`
-        );
-        setShowToast(true);
+        setToast({
+          message: `Terimakasih, ${userName}! Pesan Anda Berhasil Terkirim.`,
+          type: "success",
+          show: true,
+        });
         setFormData({
           name: "",
           email: "",
@@ -59,12 +63,18 @@ const Contact = () => {
           message: "",
         });
       } else {
-        setToastMessage("Pesan Gagal Terkirim, Coba Beberapa Saat Lagi.");
-        setShowToast(true);
+        setToast({
+          message: "Pesan Gagal Terkirim, Coba Beberapa Saat Lagi.",
+          type: "error",
+          show: true,
+        });
       }
     } catch (error) {
-      setToastMessage("Terjadi kesalahan. Silakan coba lagi.");
-      setShowToast(true);
+      setToast({
+        message: "Terjadi kesalahan. Silakan coba lagi.",
+        type: "info",
+        show: true,
+      });
     }
   };
 
@@ -84,7 +94,10 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Alamat",
-      details: ["Jl. Manis Raya No. 123", "Jakarta Selatan 12345"],
+      details: [
+        "Jl. Sungai Sahang Ujung",
+        "Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan",
+      ],
       color: "text-red-500",
     },
     {
@@ -259,10 +272,11 @@ const Contact = () => {
                 Kirim Pesan
               </button>
             </form>
-            {showToast && (
+            {toast.show && (
               <Toast
-                message={toastMessage}
-                onClose={() => setShowToast(false)}
+                message={toast.message}
+                type={toast.type}
+                onClose={() => setToast({ ...toast, show: false })}
               />
             )}
           </div>
@@ -270,15 +284,19 @@ const Contact = () => {
           {/* Map and Additional Info */}
           <div className="space-y-8">
             {/* Map Placeholder */}
+            {/* Google Maps Embed */}
             <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
-              <div className="h-64 bg-gray-200 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-500">Google Maps</p>
-                  <p className="text-sm text-gray-400">
-                    Lokasi SweetMelt Cookies
-                  </p>
-                </div>
+              <div className="w-full h-64 sm:h-80 lg:h-96">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1992.212292468696!2d104.7298440348474!3d-2.979578468494347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b750ecb035e67%3A0x515f1231fc0d218b!2sJurusan%20DIV%20Manajemen%20Informatika%20Politeknik%20Negeri%20Sriwijaya!5e0!3m2!1sid!2sid!4v1748586492771!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                ></iframe>
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -288,9 +306,14 @@ const Contact = () => {
                   Datang langsung ke toko kami untuk melihat proses pembuatan
                   cookies dan mencicipi langsung produk fresh kami.
                 </p>
-                <button className="text-pink-500 hover:text-pink-600 font-medium">
+                <a
+                  href="https://www.google.com/maps/place/Jurusan+DIV+Manajemen+Informatika+Politeknik+Negeri+Sriwijaya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-500 hover:text-pink-600 font-medium"
+                >
                   Lihat di Google Maps →
-                </button>
+                </a>
               </div>
             </div>
 

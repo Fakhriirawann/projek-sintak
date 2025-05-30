@@ -223,7 +223,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
                   </h3>
                   <div className="space-y-2 text-sm text-gray-600">
                     <div className="flex justify-between">
-                      <span>Same Day (Jakarta)</span>
+                      <span>Same Day (Palembang)</span>
                       <span>Rp 15.000</span>
                     </div>
                     <div className="flex justify-between">

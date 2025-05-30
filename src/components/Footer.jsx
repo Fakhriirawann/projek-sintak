@@ -4,22 +4,33 @@ import Toast from "./Toast";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("info");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("https://formspree.io/f/xgvywvnr", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: new FormData(e.target),
-    });
+    try {
+      const res = await fetch("https://formspree.io/f/xgvywvnr", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: new FormData(e.target),
+      });
 
-    if (res.ok) {
-      setShowToast(true);
-      setEmail("");
+      if (res.ok) {
+        setToastMessage("✅ Berhasil berlangganan newsletter!");
+        setToastType("success");
+        setEmail("");
+      } else {
+        setToastMessage("❌ Gagal mengirim. Silakan coba lagi.");
+        setToastType("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setToastMessage("⚠️ Terjadi kesalahan. Coba lagi nanti.");
+      setToastType("error");
     }
   };
 
@@ -71,7 +82,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-pink-500" />
-                <span className="text-gray-600">Jakarta, Indonesia</span>
+                <span className="text-gray-600">Palembang, Indonesia</span>
               </div>
             </div>
           </div>
@@ -111,10 +122,14 @@ const Footer = () => {
         </div>
 
         {/* Toast */}
-        {showToast && (
+        {toastMessage && (
           <Toast
-            message="Berhasil berlangganan newsletter!"
-            onClose={() => setShowToast(false)}
+            message={toastMessage}
+            type={toastType}
+            onClose={() => {
+              setToastMessage("");
+              setToastType("info");
+            }}
           />
         )}
       </div>

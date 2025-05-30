@@ -3,6 +3,7 @@ import { Star, Award, Truck, Shield } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import TypingEffect from "../components/TypingEffect";
 import TypingEffectWithColor from "../components/TypingEffectWithColor";
+import ParallaxSection from "../components/ParallaxSection";
 
 const Homepage = () => {
   const bestSellers = [
@@ -93,7 +94,7 @@ const Homepage = () => {
               <TypingEffect
                 text="Nikmati kelezatan cookies premium yang dibuat dengan bahan
                 berkualitas tinggi dan resep rahasia keluarga."
-                typingSpeed={25}
+                typingSpeed={15}
                 element="p"
                 className="text-xl text-gray-600 mb-8 animate-fadeIn delay-200 w-[580px]"
               />
@@ -132,7 +133,7 @@ const Homepage = () => {
       </section>
 
       {/* Promo Section */}
-      <section className="py-16 bg-gradient-to-br from-pink-200 via-rose-300 to-rose-400/80 relative overflow-hidden shadow-lg rounded-xl">
+      <section className="py-16 bg-gradient-to-br from-pink-200 via-rose-300 to-rose-400/80 relative overflow-hidden shadow-lg rounded-none">
         {/* Decorative Glow */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none z-0 animate-pulse" />
 
@@ -142,28 +143,33 @@ const Homepage = () => {
           <div className="absolute bottom-12 right-20 w-5 h-5 bg-white/30 rounded-full blur-md animate-bounce delay-300" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-wide text-slate-800 mb-4 uppercase animate-bounce">
-            🎉 Promo Spesial Hari Ini!
-          </h2>
-          <p className="text-lg sm:text-xl text-rose-800 mb-6 font-medium">
-            Beli{" "}
-            <span className="font-bold text-white bg-rose-500 px-2 py-0.5 rounded-md shadow-sm">
-              3
-            </span>{" "}
-            Gratis{" "}
-            <span className="font-bold text-white bg-rose-500 px-2 py-0.5 rounded-md shadow-sm">
-              1
-            </span>{" "}
-            untuk semua varian cookies 🍪
-          </p>
-          <Link
-            to="/catalog"
-            className="inline-block px-10 py-3 rounded-full text-white bg-rose-600 hover:bg-rose-700 font-semibold transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl"
-          >
-            🚀 Ambil Promo Sekarang
-          </Link>
-        </div>
+        <ParallaxSection
+          imageUrl={"./bg_parallax.jpeg"}
+          className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+        >
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-wide text-slate-800 mb-4 uppercase animate-bounce">
+              🎉 Promo Spesial Hari Ini!
+            </h2>
+            <p className="text-lg sm:text-xl text-rose-800 mb-6 font-medium">
+              Beli{" "}
+              <span className="font-bold text-white bg-rose-500 px-2 py-0.5 rounded-md shadow-sm">
+                3
+              </span>{" "}
+              Gratis{" "}
+              <span className="font-bold text-white bg-rose-500 px-2 py-0.5 rounded-md shadow-sm">
+                1
+              </span>{" "}
+              untuk semua varian cookies 🍪
+            </p>
+            <Link
+              to="/catalog"
+              className="inline-block px-10 py-3 rounded-full text-white bg-rose-600 hover:bg-rose-700 font-semibold transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl"
+            >
+              🚀 Ambil Promo Sekarang
+            </Link>
+          </div>
+        </ParallaxSection>
       </section>
 
       {/* Best Sellers */}
@@ -285,7 +291,7 @@ const Homepage = () => {
               {
                 icon: <Truck className="w-8 h-8 text-blue-500" />,
                 title: "Pengiriman Cepat",
-                desc: "Same day delivery untuk area Jakarta",
+                desc: "Same day delivery untuk area Palembang",
                 bg: "bg-blue-100",
               },
               {
