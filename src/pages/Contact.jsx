@@ -358,7 +358,7 @@ const Contact = () => {
                 langsung via WhatsApp.
               </p>
               <Link
-                href="https://wa.me/628187437229494"
+                href="https://wa.me/62887437229494"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-pink-500 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center"
