@@ -1,5 +1,5 @@
 "use client";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Toast from "../components/Toast";
 import {
@@ -127,7 +127,7 @@ const Contact = () => {
       name: "WhatsApp",
       icon: MessageCircle,
       handle: "+62 895-6213-89403",
-      url: "https://wa.me/+62895621389403",
+      url: "https://wa.me/+62887437229494",
       color: "text-green-500",
     },
   ];
@@ -357,7 +357,7 @@ const Contact = () => {
                 Untuk pemesanan urgent atau pertanyaan mendesak, hubungi kami
                 langsung via WhatsApp.
               </p>
-              <a
+              <Link
                 href="https://wa.me/628187437229494"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -365,7 +365,7 @@ const Contact = () => {
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Chat WhatsApp
-              </a>
+              </Link>
             </div>
           </div>
         </div>
