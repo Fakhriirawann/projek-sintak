@@ -357,7 +357,7 @@ const Contact = () => {
                 Untuk pemesanan urgent atau pertanyaan mendesak, hubungi kami
                 langsung via WhatsApp.
               </p>
-              <Link
+              <a
                 href="https://wa.me/62887437229494"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -365,7 +365,7 @@ const Contact = () => {
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Chat WhatsApp
-              </Link>
+              </a>
             </div>
           </div>
         </div>
