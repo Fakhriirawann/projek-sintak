@@ -113,7 +113,7 @@ const Contact = () => {
       name: "Instagram",
       icon: Instagram,
       handle: "@sweetmelt.cookies",
-      url: "#",
+      url: "https://www.instagram.com/sweetmelt.cookies?igsh=MWdxNWh0ZHpmbTY5dg==",
       color: "text-pink-500",
     },
     {
@@ -324,6 +324,8 @@ const Contact = () => {
                   <a
                     key={index}
                     href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors group"
                   >
                     <div
