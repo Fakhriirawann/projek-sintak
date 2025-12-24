@@ -1,5 +1,5 @@
 "use client";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Toast from "../components/Toast";
 import {
@@ -113,7 +113,7 @@ const Contact = () => {
       name: "Instagram",
       icon: Instagram,
       handle: "@sweetmelt.cookies",
-      url: "#",
+      url: "https://www.instagram.com/sweetmelt.cookies?igsh=MWdxNWh0ZHpmbTY5dg==",
       color: "text-pink-500",
     },
     {
@@ -127,7 +127,7 @@ const Contact = () => {
       name: "WhatsApp",
       icon: MessageCircle,
       handle: "+62 895-6213-89403",
-      url: "https://wa.me/+62895621389403",
+      url: "https://wa.me/+62887437229494",
       color: "text-green-500",
     },
   ];
@@ -324,6 +324,8 @@ const Contact = () => {
                   <a
                     key={index}
                     href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors group"
                   >
                     <div
@@ -356,7 +358,7 @@ const Contact = () => {
                 langsung via WhatsApp.
               </p>
               <a
-                href="https://wa.me/628187437229494"
+                href="https://wa.me/62887437229494"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-pink-500 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center"

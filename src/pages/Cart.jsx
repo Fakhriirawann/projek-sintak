@@ -43,7 +43,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
       total
     )}\n\nTerima kasih!`;
 
-    const whatsappUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/62887437229494?text=${encodeURIComponent(
       message
     )}`;
     window.open(whatsappUrl, "_blank");

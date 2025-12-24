@@ -1,6 +1,7 @@
 import { Star, Quote } from "lucide-react";
 import { useState } from "react";
 import Toast from "../components/Toast";
+import {Link} from "react-router-dom";
 
 const Testimonials = () => {
   const testimonials = [
@@ -265,18 +266,18 @@ const Testimonials = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-            <a
-              href="/catalog"
+            <Link
+              to="/catalog"
               className="bg-white text-pink-600 px-8 py-3 rounded-full font-bold shadow-sm hover:bg-pink-100 transition-colors"
             >
               🍪 Pesan Sekarang
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="border border-pink-300 text-pink-700 px-8 py-3 rounded-full font-bold hover:bg-pink-100 hover:text-pink-800 transition-colors"
             >
               💬 Hubungi Kami
-            </a>
+            </Link>
           </div>
         </div>
 
